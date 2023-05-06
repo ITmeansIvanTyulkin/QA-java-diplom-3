@@ -84,7 +84,7 @@ public class UserCreateFieldsGenerator {
     // Создаю уникальных пользователей из конструкторов рандомных значений с помощью методов email(), password(), name(), описанных выше.
     @Step("Создание дефолтного пользователя через API.")
     public static UserCreate passingGeneratorDataViaApi() {
-        return new UserCreate().setEmail("masha29@yahoo.com").setPassword("123456Hgd").setName("Маша");
+        return new UserCreate().setEmail("masha33@yahoo.com").setPassword("123456Hgd").setName("Маша");
     }
 
     // Метод для создания email существующего пользователя.
@@ -108,7 +108,7 @@ public class UserCreateFieldsGenerator {
     }
 
     public static UserCreate defaultUserEmail() {
-        return new UserCreate().setEmail("masha29@yahoo.com");
+        return new UserCreate().setEmail("masha33@yahoo.com");
     }
 
     public static UserCreate defaultUserPassword() {

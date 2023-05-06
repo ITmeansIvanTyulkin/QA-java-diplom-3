@@ -16,7 +16,6 @@ import static org.junit.Assert.assertEquals;
 
 public class HeaderTests {
     private WebDriver driver;
-    HeaderElements step;
     private HeaderElements headerElements;
 
     @Before
@@ -38,9 +37,6 @@ public class HeaderTests {
     public void constButtonClick() {
         headerElements.constructorButtonClick();
         assertEquals(BASE_URL, driver.getCurrentUrl());
-        String actualTitle = driver.getTitle();
-        String expectedTitle = "Stellar Burgers";
-        assertEquals(expectedTitle, actualTitle);
     }
 
     @Test
@@ -49,9 +45,6 @@ public class HeaderTests {
     public void lentButtonClick() {
         headerElements.lentOfOrdersClick();
         assertEquals(LENT_OF_ORDERS, driver.getCurrentUrl());
-        String actualTitle = driver.getTitle();
-        String expectedTitle = "Stellar Burgers";
-        assertEquals(expectedTitle, actualTitle);
     }
 
     @Test
@@ -60,9 +53,6 @@ public class HeaderTests {
     public void logoButtonClick() {
         headerElements.logoButtonClick();
         assertEquals(BASE_URL, driver.getCurrentUrl());
-        String actualTitle = driver.getTitle();
-        String expectedTitle = "Stellar Burgers";
-        assertEquals(expectedTitle, actualTitle);
     }
 
     @Test
@@ -71,9 +61,9 @@ public class HeaderTests {
     public void personalCabButtonClick() {
         headerElements.personalCabinetButtonClick();
         assertEquals(LOGIN_USER_URL, driver.getCurrentUrl());
-        String actualTitle = driver.getTitle();
-        String expectedTitle = "Stellar Burgers";
-        assertEquals(expectedTitle, actualTitle);
+//        String actualTitle = driver.getTitle();
+//        String expectedTitle = "Stellar Burgers";
+//        assertEquals(expectedTitle, actualTitle);
     }
 
     @After

@@ -86,7 +86,7 @@ public class PersonalCabinet {
         return getPassword;
     }
 
-    @Step("Метод для передачи даннх для параметризированного теста проверки длины пароля.")
+    @Step("Метод для передачи данных для параметризированного теста проверки длины пароля.")
     public boolean passwordLengthCheck(String text) {
         //UserCreate password = UserCreateFieldsGenerator.passwordLengthPassing();
         //driver.findElement(passwordFieldRegistration).sendKeys(password.getPassword());
@@ -97,6 +97,10 @@ public class PersonalCabinet {
     @Step("Нажать на кнопку Зарегистрироваться.")
     public void registrationButtonClick() {
         driver.findElement(registrationButton).click();
+    }
+
+    @Step("Удаление пользователя.")
+    public void userDelete() {
     }
 
     @Step("Переход на форму регистрации нового пользователя.")

@@ -10,6 +10,9 @@ import page_object_models.HeaderElements;
 import page_object_models.PersonalCabinet;
 import userCreate.UserCreate;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 public class Logging {
 
     UserCreateFieldsGenerator userCreateFieldsGenerator;
@@ -50,6 +53,12 @@ public class Logging {
     private static final By exit = By.xpath("//div//main/div/nav/ul/li[3]/button");
     private static final By emailToBeRestored = By.xpath("//div//main/div/form/fieldset/div//input");
     private static final By enterButtonFromTheRestorePage = By.xpath("//div//main/div//p/a");
+
+    // Остальные локаторы.
+    private final By accountText = By.xpath(".//p[text() = 'В этом разделе вы можете изменить свои персональные данные']");
+    private final By enterPageText = By.xpath(".//*[text() = 'Вход']");
+    private final By enterPageTextRegistration = By.xpath(".//*[text() = 'Регистрация']");
+    private final By constructorWord = By.xpath(".//*[text() = 'Конструктор']");
 
 
     // Методы для восстановления пароля.
@@ -148,5 +157,29 @@ public class Logging {
         personalCabinet.enteringTheSystem();
         personalCabinet.waitForPersonalCabinetPage();
         driver.findElement(exit).click();
+    }
+
+    @Step("Проверка, что удалось войти в аккаунт.")
+    public void checkAccountTextIsDisplayed() {
+        assertThat("В авторизованном профиле отображается информационное сообщение", true,
+                equalTo(driver.findElement(accountText).isDisplayed()));
+    }
+
+    @Step("Проверка, что регистрация успешна и произошла переадресация на страницу входа.")
+    public void checkEnterPageTextIsDisplayed() {
+        assertThat("Регистрация пользователя удалась, если произошёл переход к форме входа с заголовком ВХОД", true,
+                equalTo(driver.findElement(enterPageText).isDisplayed()));
+    }
+
+    @Step("Проверка, что регистрация успешна и произошла переадресация на страницу входа.")
+    public void checkEnterPageTextIsDisplayedTrue() {
+        assertThat("Регистрация пользователя удалась, если произошёл переход к форме входа с заголовком ВХОД", true,
+                equalTo(driver.findElement(enterPageTextRegistration).isDisplayed()));
+    }
+
+    @Step("Проверка, что регистрация успешна и произошла переадресация на страницу входа.")
+    public void checkConstructorPageTextIsDisplayed() {
+        assertThat("Переход в конструктор удался.", true,
+                equalTo(driver.findElement(constructorWord).isDisplayed()));
     }
 }

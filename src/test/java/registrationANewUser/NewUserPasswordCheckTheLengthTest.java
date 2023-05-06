@@ -3,6 +3,7 @@ package registrationANewUser;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
+import logging.Logging;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +19,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class NewUserPasswordCheckTheLengthTest {
+    private Logging logging;
     private PersonalCabinet personalCabinet;
     private WebDriver driver;
     private final String attempt;
@@ -30,10 +32,10 @@ public class NewUserPasswordCheckTheLengthTest {
     @Parameterized.Parameters
     public static Object[][] getData() {
         return new Object[][]{
-                {"12345"},      // Должен падать, так как задана некорректная длина пароля.
+                {"12345"},      // Падает, так как задана некорректная длина пароля.
                 {"!@#$%^"},     // Здесь баг, ТЕСТ ДОЛЖЕН ПАДАТЬ, так как задано 6 спецсимволов, но успешен.
                 {"      "},     // Здесь баг, ТЕСТ ДОЛЖЕН ПАДАТЬ, но пробелы принимаются в качестве пароля, успешен.
-                {"1J89k"},      // Должен падать, так как задана некорректная длина пароля из цифр и букв..
+                {"1J89k"},      // Падает, так как задана некорректная длина пароля из цифр и букв.
                 {"1234Kl"},     // Успешный: цифры и буквы (заглавные и строчные).
         };
     }
@@ -64,5 +66,6 @@ public class NewUserPasswordCheckTheLengthTest {
     @After
     public void tearDown() {
         driver.quit();
+        personalCabinet.userDelete();
     }
 }

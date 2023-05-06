@@ -47,7 +47,10 @@ public class LoggingTest {
         headerElements.waitForLoadHomePage();
         headerElements.personalCabinetButtonClick();
         personalCabinet.waitForPersonalCabinetPage();
-        assertEquals(PROFILE_URL, driver.getCurrentUrl());
+
+        // Двойная проверка: убеждаемся, что точно вошли в аккаунт -
+        logging.checkAccountTextIsDisplayed(); // 1). Видим сообщение в соответствии с "В авторизованном профиле отображается информационное сообщение".
+        assertEquals(PROFILE_URL, driver.getCurrentUrl()); // 2). URL страницы личного аккаунта совпадает с URL в документации.
     }
 
     @Test
@@ -58,7 +61,11 @@ public class LoggingTest {
         logging = new Logging(driver);
         logging.loggingViaThePersonalCabinetButton();
         personalCabinet.waitForPersonalCabinetPage();
-        assertEquals(PROFILE_URL, driver.getCurrentUrl());
+
+        // Двойная проверка: убеждаемся, что точно вошли в аккаунт -
+        assertEquals(PROFILE_URL, driver.getCurrentUrl()); // 1). URL страницы личного аккаунта совпадает с URL в документации.
+        logging.checkAccountTextIsDisplayed(); // 2). Видим сообщение в соответствии с "В авторизованном профиле отображается информационное сообщение".
+
     }
 
     @Test
@@ -67,7 +74,10 @@ public class LoggingTest {
     public void loggingTheUserFromTheRegistrationFormButton() {
         logging = new Logging(driver);
         logging.loggingViaTheRegistrationButtonForm();
-        assertEquals(PROFILE_URL, driver.getCurrentUrl());
+
+        // Двойная проверка: убеждаемся, что точно вошли в аккаунт -
+        assertEquals(PROFILE_URL, driver.getCurrentUrl()); // 1). URL страницы личного аккаунта совпадает с URL в документации.
+        logging.checkAccountTextIsDisplayed(); // 2). Видим сообщение в соответствии с "В авторизованном профиле отображается информационное сообщение".
     }
 
     @Test

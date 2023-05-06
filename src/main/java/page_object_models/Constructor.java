@@ -26,7 +26,7 @@ public class Constructor {
         driver.findElement(sauces).click();
     }
 
-    @Step("Проверка перехода к раздулу болок.")
+    @Step("Проверка перехода к раздулу булок.")
     public void goToBuns() {
         driver.findElement(buns).click();
     }
